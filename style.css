@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --bg-color: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  --bg-woin-color: rgba(0, 0, 0, 0.95);
+  --bg-active: rgba(255, 255, 255, 0.5);
+  --text-color: #333;
+  --text2-color2: #fff;
+  --second-color: #bf2e34;
+  --border-color: #b8b8b8;
+  --transition: 0.4s ease;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  min-height: 100vh;
+  background-image: var(--bg-color);
+  color: var(--text-color);
+}
+
+#points {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  padding: 0.5rem 1rem;
+  background-color: var(--second-color);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text2-color2);
+  border-radius: 1rem 0 0 1rem;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding: 4rem;
+  transition: var(--transition);
+  overflow: hidden;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: var(--bg-active);
+  transition: var(--transition);
+  z-index: -1;
+}
+.container.role-player-2::before {
+  left: 50%;
+}
+
+/* woin Desing */
+.container.woin1::before {
+  background-color: rgba(0, 0, 0, 0.95);
+}
+.container.woin1 .player-1 .score-box {
+  color: #bf2e34;
+}
+
+.container.woin2::before {
+  left: 50%;
+  background-color: rgba(0, 0, 0, 0.95);
+}
+.container.woin2 .player-2 .score-box {
+  color: #bf2e34;
+}
+/* woin Desing */
+
+.player-1,
+.player-2 {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.score-box h1 {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+}
+.score-box span {
+  font-size: 5rem;
+  font-weight: bold;
+}
+.current-box {
+  background-color: var(--second-color);
+  color: var(--text2-color2);
+  padding: 1rem 3rem;
+  border-radius: 0.8rem;
+  border: 0.3rem solid var(--border-color);
+}
+.current-box h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2rem;
+}
+.current-box span {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.buttons {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.buttons button {
+  width: 5rem;
+  height: 5rem;
+  border: none;
+  background-color: var(--text2-color2);
+  color: var(--text-color);
+  border-radius: 0.6rem;
+  font-size: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.buttons button:hover {
+  background-color: #222;
+  color: var(--text2-color2);
+}
+.dice-box {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--second-color);
+  overflow: hidden;
+}
+.dice-box img {
+  width: 100%;
+  height: 100%;
+}
+
+.start-game-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.start-game-box.hidden {
+  display: none;
+}
+.start-game-box h1 {
+  font-size: 3rem;
+  color: var(--second-color);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.start-game-box form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.start-game-box form input,
+.start-game-box form button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: inherit;
+  border: 0.2rem solid var(--text-color);
+  outline: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border-radius: 0.8rem;
+  transition: var(--transition);
+}
+.start-game-box form input:focus {
+  border: 0.2rem solid var(--second-color);
+}
+.start-game-box form button {
+  cursor: pointer;
+}
+.start-game-box form button:hover {
+  background-color: #222;
+  color: var(--text2-color2);
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+  .container {
+    flex-direction: column;
+    gap: 10rem;
+  }
+  .container::before {
+    width: 100%;
+    height: 50%;
+    top: 0;
+    left: 0;
+  }
+  .container.role-player-2::before {
+    top: 50%;
+    left: 0;
+  }
+
+  /* woin Desing */
+  .container.woin2::before {
+    top: 50%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+  }
+  .container.woin2 .player-2 .score-box {
+    color: #bf2e34;
+  }
+  /* woin Desing */
+  .player-1,
+  .player-2 {
+    justify-content: center;
+    gap: 2rem;
+  }
+  .player-1 h1,
+  .player-2 h1 {
+    margin-bottom: 0;
+  }
+
+  .start-game-box form {
+    width: 250px;
+  }
+}
